@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>学习看板</title>
+<link rel="stylesheet" href="/styles/base.css">
+<link rel="stylesheet" href="/styles/cards.css">
+<link rel="stylesheet" href="/styles/chat.css">
+<link rel="stylesheet" href="/styles/settings.css">
+</head>
+<body>
+
+<div id="banner"></div>
+
+<div class="wrap">
+  <div class="top row" id="top">    <section class="cards" id="cards"></section>
+    <div class="toolbar" id="toolbar">
+      <button class="tool" id="btnAdd" title="新建卡片"><i data-icon="add"></i><span>新建卡片</span></button>
+      <button class="tool" id="btnNewChat" title="新建对话"><i data-icon="newchat"></i><span>新建对话</span></button>
+      <button class="tool" id="btnEven" title="均分宽度"><i data-icon="columns"></i><span>均分宽度</span></button>
+      <button class="tool danger" id="btnDelete" title="删除卡片"><i data-icon="trash"></i><span id="delLabel">删除</span></button>
+      <button class="tool" id="btnCancel" title="取消选择"><i data-icon="close"></i><span>取消</span></button>
+      <button class="tool" id="btnSettings" title="设置"><i data-icon="gear"></i><span>设置</span></button>
+    </div>
+  </div>
+
+  <div class="hsplit" id="hsplit" title="上下拖动调整卡片区 / 对话区高度"></div>
+
+  <section class="chat">
+    <div class="chat-head modelpanel">
+      <div class="hblock left">
+        <select class="convsel" id="convSel" title="切换对话"></select>
+      </div>
+      <div class="hblock mid asbtn" id="modelBox" title="模型与推理等级">
+        <span class="dot off" id="dot"></span>
+        <span class="mprov" id="mprov"></span>
+        <span class="msep" id="msep">·</span>
+        <span class="mname" id="who">豆包</span>
+        <span class="efftag" id="effTag"></span>
+        <span class="chev">›</span>
+      </div>
+      <div class="hblock right">
+        <span class="saved" id="saved">就绪</span>
+      </div>
+    </div>
+
+    <div class="chatpanel">
+      <div class="msgs" id="msgs"></div>
+      <div class="attach" id="attach"></div>
+      <form class="composer" id="composer">
+        <input id="input" placeholder="问点什么…" autocomplete="off">
+        <button type="submit" id="sendBtn">发送</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<div id="trash"><i data-icon="trash"></i><span>拖到此处删除</span></div>
+<div id="toast"></div>
+
+<div class="modal" id="modal">
+  <div class="panel">
+    <div class="panel-head"><span class="ph-title"><i data-icon="gear"></i>设置</span><button class="x" id="modalClose" title="关闭"><i data-icon="close"></i></button></div>
+    <div class="panel-body">
+      <label class="fld">
+        <span>供应商</span>
+        <select id="fProvider">
+          <option value="commandcode">CommandCode</option>
+          <option value="ark">火山方舟（豆包）</option>
+          <option value="deepseek">DeepSeek 官方</option>
+          <option value="openai">OpenAI</option>
+          <option value="custom">自定义（手填 Base URL）</option>
+        </select>
+        <em class="tip" id="provTip"></em>
+      </label>
+      <label class="fld">
+        <span>API Key</span>
+        <input id="fKey" type="password" autocomplete="off" placeholder="未配置">
+        <em class="tip" id="keyTip">留空表示不修改已保存的 Key</em>
+      </label>
+      <label class="fld">
+        <span>模型 ID</span>
+        <input id="fModel" placeholder="模型名">
+      </label>
+      <label class="fld">
+        <span>Base URL</span>
+        <input id="fBase" placeholder="https://...">
+      </label>
+      <label class="fld">
+        <span>System Prompt</span>
+        <textarea id="fSys" rows="3"></textarea>
+      </label>
+    </div>
+    <div class="panel-foot">
+      <span class="msg" id="modalMsg"></span>
+      <button class="btn-ghost" id="modalCancel">取消</button>
+      <button class="btn-primary" id="modalSave">保存</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>

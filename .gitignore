@@ -1,0 +1,16 @@
+node_modules/
+config.json
+data*.json
+data.json.v1-backup
+cards.json
+config.json.*
+data.json.*
+cards.json.*
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db
+*.tmp
+test-results/

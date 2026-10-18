@@ -1,0 +1,14 @@
+{
+  "name": "study-board",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "本地学习看板：知识卡片与 AI 对话",
+  "scripts": {
+    "start": "node server.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "node --test",
+    "test:browser": "node scripts/browser-check.cjs"
+  },
+  "engines": { "node": ">=18.0.0" }
+}
